@@ -23,3 +23,5 @@ Form.addEventListener('submit', (event)=>{
     const tax = calculatorIncomeTax(income);
     document.getElementById('infoTextInput').value = tax;
 })
+import "//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"
+let table = new DataTable('#myTable');
