@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green-themed Form</title>
+    <style>
+        body {
+            background-color: #e0ffe0; /* Light green background */
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #4CAF50; /* Green container background */
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .container h2 {
+            color: #fff; /* White text color */
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            color: #fff; /* White text color for labels */
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="date"], /* Added input type for date */
+        input[type="time"], /* Added input type for time */
+        input[type="number"], /* Added input type for annual income */
+        textarea {
+            width: 90%;
+            padding: 10px;
+            border: 1px solid #4CAF50; /* Green border for input fields */
+            border-radius: 3px;
+        }
+
+        input[type="submit"] {
+            background-color: darkgreen; /* Green submit button background */
+            color: #fff; /* White text color for button */
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #95ef9a;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+<section>
+    <div class="container" style="padding: 10px;">
+        <h2>Book Appointment</h2>
+        <form id="contactForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="date">Appointment Date:</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+            <div class="form-group">
+                <label for="time">Appointment Time:</label>
+                <input type="time" id="time" name="time" required>
+            </div>
+            <div class="form-group">
+                <label for="income">Annual Income:</label>
+                <input type="number" id="income" name="income" required>
+            </div>
+            <div class="form-group submit">
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+</section>
+
+<script>
+    // JavaScript for handling form submission (you can replace this with your own logic)
+    document.getElementById("contactForm").addEventListener("submit", function (event) {
+        event.preventDefault();
+        alert("Form submitted! (This is a placeholder action.)");
+        // You can add your own form submission logic here, such as sending data to a server.
+    });
+</script>
+</body>
+</html>
