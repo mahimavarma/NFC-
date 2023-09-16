@@ -1,0 +1,14 @@
+h1{
+    padding-top: 20px;
+    font-size: 100px;
+    font-weight: 600;
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(155,211,158,1) 35%, rgba(0,212,255,1) 100%);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    text-align: center;
+}
+
+p{
+    text-align: center;
+}

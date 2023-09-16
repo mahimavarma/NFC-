@@ -1,0 +1,8 @@
+h1 {
+    font-size: 70px;
+    font-weight: 600;
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(155,211,158,1) 35%, rgba(0,212,255,1) 100%);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
