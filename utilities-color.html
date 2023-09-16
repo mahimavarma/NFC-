@@ -1,0 +1,926 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+}
+
+#calendar {
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#calendar .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#calendar .header button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+#calendar #month-year {
+    font-size: 1.2rem;
+}
+
+#calendar .days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+#calendar .day {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+}
+
+#calendar .highlighted {
+    background-color: red;
+    color: white;
+}
+
+.reminder {
+    display: none;
+    position: absolute;
+    background-color: rgba(255, 0, 0, 0.8);
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 1;
+}
+
+.highlighted:hover .reminder {
+    display: block;
+}
+.space{
+    margin: 50px;
+}
+#carouselExampleIndicator{
+    background-color: blue;
+}
+#Reminders-carousel{
+padding: 7% 15%;
+text-align: center;
+background:linear-gradient(45deg, lightgreen,darkgreen);
+color: #fff;
+width: 100%;
+}
+
+#press{
+background-color: black;
+text-align: center;
+padding-bottom: 3%;
+}
+
+.press-logo{
+
+width: 15%;
+margin: 20px 20px 20px 50px;
+}
+
+.carousel-item{
+padding: 7% 15%;
+
+}
+</style>
+<title>Custom Calendar</title>
+</head>
+
+    <title>Tax Planning</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-laugh-wink"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">Hi</div>
+            </a>
+                
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="index.html">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Tax Calculators</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Type of tax</h6>
+                        <a class="collapse-item" href="utilities-border.html">Income Tax Calculator</a>
+                        <a class="collapse-item" href="cards.html">GST Calculator</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Interactive Tools</span>
+                </a>
+                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Features</h6>
+                        <a class="collapse-item" href="utilities-color.html">Tax Planning</a>
+                        <a class="collapse-item" href="utilities-animation.html">Consultation</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+                    aria-expanded="true" aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Information</span>
+                </a>
+                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="login.html">Tax Insights</a>
+                        <a class="collapse-item" href="register.html">Resource Library</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                <a class="nav-link" href="charts.html">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Tax Minimization</span></a>
+            </li>
+
+            <!-- Nav Item - Tables -->
+            
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+            <!-- Sidebar Message -->
+            <div class="sidebar-card d-none d-lg-flex">
+                <img class="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="...">
+                <p class="text-center mb-2"><strong>TechForTax Pro</strong> is packed with premium features, components, and more!</p>
+                <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
+            </div>
+
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                text-align: center;
+                display: flex;
+                flex-direction: column; 
+                align-items: center;
+            }
+            
+            #calendar {
+                width: 300px;
+                border: 1px solid #ccc;
+                border-radius: 10px;
+                padding: 10px;
+            }
+            
+            #calendar .header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 10px;
+            }
+            
+            #calendar .header button {
+                background: none;
+                border: none;
+                cursor: pointer;
+            }
+            
+            #calendar #month-year {
+                font-size: 1.2rem;
+            }
+            
+            #calendar .days {
+                display: grid;
+                grid-template-columns: repeat(7, 1fr);
+                gap: 5px;
+            }
+            
+            #calendar .day {
+                width: 30px;
+                height: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                cursor: pointer;
+                position: relative;
+            }
+            
+            #calendar .highlighted {
+                background-color: red;
+                color: white;
+            }
+            
+            .reminder {
+                display: none;
+                position: absolute;
+                background-color: rgba(255, 0, 0, 0.8);
+                color: white;
+                padding: 5px;
+                border-radius: 5px;
+                font-size: 12px;
+                white-space: nowrap;
+                z-index: 1;
+            }
+            
+            .highlighted:hover .reminder {
+                display: block;
+            }
+            .space{
+                margin: 50px;
+            }
+            #carouselExampleIndicator{
+                background-color: blue;
+            }
+            #Reminders-carousel{
+            padding: 7% 15%;
+            text-align: center;
+            background:linear-gradient(45deg, lightgreen,darkgreen);
+            color: #fff;
+            width: 100%;
+            }
+            
+            #press{
+            background-color: black;
+            text-align: center;
+            padding-bottom: 3%;
+            }
+            
+            .press-logo{
+            
+            width: 15%;
+            margin: 20px 20px 20px 50px;
+            }
+            
+            .carousel-item{
+            padding: 7% 15%;
+            
+            }
+            </style>
+
+<body>
+    <div class="space">
+
+    </div>
+    <div id="calendar">
+        <div class="header">
+            <button id="prev-month">Prev</button>
+            <span id="month-year"></span>
+            <button id="next-month">Next</button>
+        </div>
+        <div class="days" id="calendar-days"></div>
+    </div>
+    <div class="space"></div>
+    <div class="space"></div>
+    <br>
+    <section id="Reminders-carousel">
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <!-- January Reminder -->
+                <div class="carousel-item active">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card" style="padding: 10px;">
+                                <div class="card-body">
+                                    <h5 class="card-title">September Reminder</h5>
+                                    <div class="card text-center">
+                                        <div class="card-header">
+                                            Property tax
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">Fill the property tax forms immediately!</h5>
+                                            <a href="#" class="btn btn-primary">Go to form</a>
+                                        </div>
+                                        <div class="card-footer text-body-secondary">
+                                            5 days ago
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card" style="padding: 10px;">
+                                <div class="card-body">
+                                    <h5 class="card-title">September Reminder</h5>
+                                    <div class="card text-center">
+                                        <div class="card-header">
+                                            Income Tax
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">Fill the form for income   tax immediately!</h5>
+                                            <a href="#" class="btn btn-primary">Go to form</a>
+                                        </div>
+                                        <div class="card-footer text-body-secondary">
+                                            1 week to go 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card" style="padding: 10px;">
+                                <div class="card-body">
+                                    <h5 class="card-title">September Reminder</h5>
+                                    <div class="card text-center">
+                                        <div class="card-header">
+                                            Estate Tax
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">Fill the form for Estate     tax immediately!</h5>
+                                            <a href="#" class="btn btn-primary">Go to form</a>
+                                        </div>
+                                        <div class="card-footer text-body-secondary">
+                                            2 weeks to go 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Add more cards here -->
+                    </div>
+                </div>
+           
+                <!-- February Reminder -->
+              
+                <!-- Add more reminders for other months here -->
+                <div class="carousel-item active">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card" style="padding: 10px;">
+                                <div class="card-body">
+                                    <h5 class="card-title">October Reminder</h5>
+                                    <div class="card text-center">
+                                        <div class="card-header">
+                                            Featured
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">Fill the property tax forms immediately!</h5>
+                                            <a href="#" class="btn btn-primary">Go to form</a>
+                                        </div>
+                                        <div class="card-footer text-body-secondary">
+                                            5 days ago
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card" style="padding: 10px;">
+                                <div class="card-body">
+                                    <h5 class="card-title">October Reminder</h5>
+                                    <div class="card text-center">
+                                        <div class="card-header">
+                                            Income Tax
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">Fill the form for income tax immediately!</h5>
+                                            <a href="#" class="btn btn-primary">Go to form</a>
+                                        </div>
+                                        <div class="card-footer text-body-secondary">
+                                            1 week to go 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card" style="padding: 10px;">
+                                <div class="card-body">
+                                    <h5 class="card-title">October Reminder</h5>
+                                    <div class="card text-center">
+                                        <div class="card-header">
+                                            Estate Tax
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">Fill the form for Estate   tax immediately!</h5>
+                                            <a href="#" class="btn btn-primary">Go to form</a>
+                                        </div>
+                                        <div class="card-footer text-body-secondary">
+                                            2 weeks to go 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Add more cards here -->
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleSlidesOnly" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleSlidesOnly" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const calendarDays = document.getElementById("calendar-days");
+            const monthYear = document.getElementById("month-year");
+
+            const monthNames = [
+                "January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"
+            ];
+
+            const today = new Date();
+            let currentMonth = today.getMonth();
+            const currentYear = today.getFullYear();
+
+            function updateCalendar(year, month) {
+                const firstDayOfMonth = new Date(year, month, 1);
+                const lastDayOfMonth = new Date(year, month + 1, 0);
+
+                monthYear.innerText = `${monthNames[month]} ${year}`;
+
+                let daysHtml = "";
+                for (let i = 1; i <= lastDayOfMonth.getDate(); i++) {
+                    const day = new Date(year, month, i);
+                    const classNames = ["day"];
+                    if (
+                        (month === 8 && [7, 20,29].includes(i)) || // September 7th and 20th
+                        (month === 10 && [2, 18,8].includes(i)) ||
+                        (month === 9 &&[19,28].includes(i)) // October 19th
+                    ) {
+                        classNames.push("highlighted");
+                        classNames.push("has-reminder");
+                    }
+                    daysHtml += `<div class="${classNames.join(' ')}">${i}<div class="reminder">Reminder to pay tax</div></div>`;
+                }
+
+                calendarDays.innerHTML = daysHtml;
+            }
+
+            function nextMonth() {
+                currentMonth++;
+                if (currentMonth > 11) {
+                    currentMonth = 0;
+                    currentYear++;
+                }
+                updateCalendar(currentYear, currentMonth);
+            }
+
+            function prevMonth() {
+                currentMonth--;
+                if (currentMonth < 0) {
+                    currentMonth = 11;
+                    currentYear--;
+                }
+                updateCalendar(currentYear, currentMonth);
+            }
+
+            updateCalendar(currentYear, currentMonth);
+
+            document.getElementById("next-month").addEventListener("click", nextMonth);
+            document.getElementById("prev-month").addEventListener("click", prevMonth);
+        });
+    </script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Your Website 2020</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+</body>
+
+</html>-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Add your meta tags, stylesheets, and other head content here -->
+
+    <title>Tax Planning</title>
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    
+    <style>
+        /* Add your custom styles here */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #calendar {
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        #calendar .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        #calendar .header button {
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        #calendar #month-year {
+            font-size: 1.2rem;
+        }
+
+        #calendar .days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+
+        #calendar .day {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        #calendar .highlighted {
+            background-color: red;
+            color: white;
+        }
+
+        .reminder {
+            display: none;
+            position: absolute;
+            background-color: rgba(255, 0, 0, 0.8);
+            color: white;
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 12px;
+            white-space: nowrap;
+            z-index: 1;
+        }
+
+        .highlighted:hover .reminder {
+            display: block;
+        }
+
+        .space {
+            margin: 50px;
+        }
+    </style>
+</head>
+
+<body id="page-top">
+    <!-- Calendar Section -->
+    <div id="calendar">
+        <div class="header">
+            <button id="prev-month">Prev</button>
+            <span id="month-year"></span>
+            <button id="next-month">Next</button>
+        </div>
+        <div class="days" id="calendar-days"></div>
+    </div>
+
+    <!-- Carousel Section -->
+    <section id="Reminders-carousel">
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <!-- Carousel content here -->
+                <div class="space"></div>
+                <div class="space"></div>
+                <section id="Reminders-carousel">
+                    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <!-- January Reminder -->
+                            <div class="carousel-item active">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="card" style="padding: 10px;">
+                                            <div class="card-body">
+                                                <h5 class="card-title">September Reminder</h5>
+                                                <div class="card text-center">
+                                                    <div class="card-header">
+                                                        Property tax
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">Fill the property tax forms immediately!</h5>
+                                                        <a href="#" class="btn btn-primary">Go to form</a>
+                                                    </div>
+                                                    <div class="card-footer text-body-secondary">
+                                                        5 days ago
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="card" style="padding: 10px;">
+                                            <div class="card-body">
+                                                <h5 class="card-title">September Reminder</h5>
+                                                <div class="card text-center">
+                                                    <div class="card-header">
+                                                        Income Tax
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">Fill the form for income   tax immediately!</h5>
+                                                        <a href="#" class="btn btn-primary">Go to form</a>
+                                                    </div>
+                                                    <div class="card-footer text-body-secondary">
+                                                        1 week to go 
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="card" style="padding: 10px;">
+                                            <div class="card-body">
+                                                <h5 class="card-title">September Reminder</h5>
+                                                <div class="card text-center">
+                                                    <div class="card-header">
+                                                        Estate Tax
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">Fill the form for Estate     tax immediately!</h5>
+                                                        <a href="#" class="btn btn-primary">Go to form</a>
+                                                    </div>
+                                                    <div class="card-footer text-body-secondary">
+                                                        2 weeks to go 
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Add more cards here -->
+                                </div>
+                            </div>
+                       
+                            <!-- February Reminder -->
+                          
+                            <!-- Add more reminders for other months here -->
+                            <div class="carousel-item active">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="card" style="padding: 10px;">
+                                            <div class="card-body">
+                                                <h5 class="card-title">October Reminder</h5>
+                                                <div class="card text-center">
+                                                    <div class="card-header">
+                                                        Featured
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">Fill the property tax forms immediately!</h5>
+                                                        <a href="#" class="btn btn-primary">Go to form</a>
+                                                    </div>
+                                                    <div class="card-footer text-body-secondary">
+                                                        5 days ago
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="card" style="padding: 10px;">
+                                            <div class="card-body">
+                                                <h5 class="card-title">October Reminder</h5>
+                                                <div class="card text-center">
+                                                    <div class="card-header">
+                                                        Income Tax
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">Fill the form for income tax immediately!</h5>
+                                                        <a href="#" class="btn btn-primary">Go to form</a>
+                                                    </div>
+                                                    <div class="card-footer text-body-secondary">
+                                                        1 week to go 
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="card" style="padding: 10px;">
+                                            <div class="card-body">
+                                                <h5 class="card-title">October Reminder</h5>
+                                                <div class="card text-center">
+                                                    <div class="card-header">
+                                                        Estate Tax
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">Fill the form for Estate   tax immediately!</h5>
+                                                        <a href="#" class="btn btn-primary">Go to form</a>
+                                                    </div>
+                                                    <div class="card-footer text-body-secondary">
+                                                        2 weeks to go 
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Add more cards here -->
+                                </div>
+                            </div>
+                        </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleSlidesOnly"
+                data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleSlidesOnly"
+                data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Rest of your HTML content -->
+
+    <!-- Add your JavaScript scripts here -->
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages -->
+    <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- Your custom JavaScript for the calendar and carousel can be added here -->
+</body>
+
+</html>
